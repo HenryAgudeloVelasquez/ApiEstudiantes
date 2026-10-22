@@ -1,0 +1,185 @@
+@ApiEstudiantes_HostAddress = http://localhost:5289
+
+### -------------------------------------------
+### 1. ESTUDIANTES
+### -------------------------------------------
+
+### Listar todos los estudiantes
+GET {{ApiEstudiantes_HostAddress}}/api/Estudiantes/GetListAll
+Accept: application/json
+
+### Obtener estudiante por ID
+GET {{ApiEstudiantes_HostAddress}}/api/Estudiantes/Get/1
+Accept: application/json
+
+### Obtener estudiante por Identificación
+GET {{ApiEstudiantes_HostAddress}}/api/Estudiantes/GetByIdentificacion/10102020
+Accept: application/json
+
+### Registrar nuevo estudiante
+POST {{ApiEstudiantes_HostAddress}}/api/Estudiantes/Add
+Content-Type: application/json
+
+{
+  "tipoDocumento": "CC",
+  "identificacion": "10102020",
+  "nombres": "Juan David",
+  "apellidos": "Pérez Gómez",
+  "correoElectronico": "juan.perez@universidad.edu.co",
+  "password": "Password123*",
+  "fechaNacimiento": "2000-05-15",
+  "ciudadResidencia": "Medellín",
+  "estado": true
+}
+
+### Actualizar estudiante
+PUT {{ApiEstudiantes_HostAddress}}/api/Estudiantes/Edit/1
+Content-Type: application/json
+
+{
+  "tipoDocumento": "CC",
+  "identificacion": "10102020",
+  "nombres": "Juan David",
+  "apellidos": "Pérez Gómez Actualizado",
+  "correoElectronico": "juan.perez@universidad.edu.co",
+  "password": "",
+  "fechaNacimiento": "2000-05-15",
+  "ciudadResidencia": "Envigado",
+  "estado": true
+}
+
+### Alternar estado (Activo/Inactivo)
+PATCH {{ApiEstudiantes_HostAddress}}/api/Estudiantes/ToggleEstado/1
+Accept: application/json
+
+### Eliminar estudiante
+DELETE {{ApiEstudiantes_HostAddress}}/api/Estudiantes/Delete/1
+Accept: application/json
+
+
+### -------------------------------------------
+### 2. PROFESORES
+### -------------------------------------------
+
+### Listar todos los profesores
+GET {{ApiEstudiantes_HostAddress}}/api/Profesores/GetListAll
+Accept: application/json
+
+### Obtener profesor por ID
+GET {{ApiEstudiantes_HostAddress}}/api/Profesores/Get/1
+Accept: application/json
+
+### Obtener profesor por Identificación
+GET {{ApiEstudiantes_HostAddress}}/api/Profesores/GetByIdentificacion/70809010
+Accept: application/json
+
+### Registrar nuevo profesor
+POST {{ApiEstudiantes_HostAddress}}/api/Profesores/Add
+Content-Type: application/json
+
+{
+  "identificacion": "70809010",
+  "nombres": "Carlos Alberto",
+  "apellidos": "Ramírez Restrepo",
+  "estado": true
+}
+
+### Actualizar profesor
+PUT {{ApiEstudiantes_HostAddress}}/api/Profesores/Edit/1
+Content-Type: application/json
+
+{
+  "identificacion": "70809010",
+  "nombres": "Carlos Alberto",
+  "apellidos": "Ramírez Restrepo Modificado",
+  "estado": true
+}
+
+### Alternar estado (Activo/Inactivo)
+PATCH {{ApiEstudiantes_HostAddress}}/api/Profesores/ToggleEstado/1
+Accept: application/json
+
+### Eliminar profesor
+DELETE {{ApiEstudiantes_HostAddress}}/api/Profesores/Delete/1
+Accept: application/json
+
+
+### -------------------------------------------
+### 3. MATERIAS
+### -------------------------------------------
+
+### Listar todas las materias (con nombre del profesor)
+GET {{ApiEstudiantes_HostAddress}}/api/Materias/GetListAll
+Accept: application/json
+
+### Obtener materia por ID
+GET {{ApiEstudiantes_HostAddress}}/api/Materias/Get/1
+Accept: application/json
+
+### Obtener materias por ID de profesor
+GET {{ApiEstudiantes_HostAddress}}/api/Materias/GetByProfesor/1
+Accept: application/json
+
+### Registrar nueva materia
+POST {{ApiEstudiantes_HostAddress}}/api/Materias/Add
+Content-Type: application/json
+
+{
+  "nombre": "Cálculo Diferencial",
+  "creditos": 3,
+  "idProfesor": 1,
+  "estado": true
+}
+
+### Actualizar materia
+PUT {{ApiEstudiantes_HostAddress}}/api/Materias/Edit/1
+Content-Type: application/json
+
+{
+  "nombre": "Cálculo Integral",
+  "creditos": 4,
+  "idProfesor": 1,
+  "estado": true
+}
+
+### Alternar estado de la materia
+PATCH {{ApiEstudiantes_HostAddress}}/api/Materias/ToggleEstado/1
+Accept: application/json
+
+### Eliminar materia
+DELETE {{ApiEstudiantes_HostAddress}}/api/Materias/Delete/1
+Accept: application/json
+
+
+### -------------------------------------------
+### 4. INSCRIPCIONES (Estudiante - Materia)
+### -------------------------------------------
+
+### Listar todas las inscripciones (con datos completos de estudiante, materia y docente)
+GET {{ApiEstudiantes_HostAddress}}/api/Inscripciones/GetListAll
+Accept: application/json
+
+### Obtener inscripción por ID
+GET {{ApiEstudiantes_HostAddress}}/api/Inscripciones/Get/1
+Accept: application/json
+
+### Obtener inscripciones de un estudiante
+GET {{ApiEstudiantes_HostAddress}}/api/Inscripciones/GetByEstudiante/1
+Accept: application/json
+
+### Obtener estudiantes inscritos en una materia
+GET {{ApiEstudiantes_HostAddress}}/api/Inscripciones/GetByMateria/1
+Accept: application/json
+
+### Registrar inscripción de estudiante a materia
+POST {{ApiEstudiantes_HostAddress}}/api/Inscripciones/Add
+Content-Type: application/json
+
+{
+  "idEstudiante": 1,
+  "idMateria": 1
+}
+
+### Eliminar inscripción por ID
+DELETE {{ApiEstudiantes_HostAddress}}/api/Inscripciones/Delete/1
+Accept: application/json
